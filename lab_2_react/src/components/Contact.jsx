@@ -1,7 +1,7 @@
-function Footer() {
+function Contact() {
     return (
-        <footer id="contacts">
-            <h2>Контакти</h2>
+        <section id="contact">
+            <h2>Contact</h2>
             <address>
                 <ul>
                     <li>
@@ -30,14 +30,11 @@ function Footer() {
                             linkedin.com/in/аліна-пилипців-a42a32440
                         </a>
                     </li>
-                    <li>Місто: Львів, Україна</li>
+                    <li>Lviv, Ukraine</li>
                 </ul>
             </address>
-            <p>
-                <small>&copy; 2026 Пилипців Аліна</small>
-            </p>
-        </footer>
+        </section>
     );
 }
 
-export default Footer;
+export default Contact;

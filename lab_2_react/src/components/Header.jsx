@@ -1,17 +1,19 @@
 function Header() {
     return (
-        <header>
-            <h1>Пилипців Аліна</h1>
-            <p>Студентка напряму «Кібербезпека» | Початківець у сфері інформаційної безпеки</p>
-            <nav aria-label="Навігація по сторінці">
-                <ul>
-                    <li><a href="#about">Про мене</a></li>
-                    <li><a href="#education">Освіта</a></li>
-                    <li><a href="#experience">Досвід</a></li>
-                    <li><a href="#skills">Навички</a></li>
-                    <li><a href="#contacts">Контакти</a></li>
-                </ul>
-            </nav>
+        <header className="profile">
+            <div className="avatar" aria-hidden="true">PA</div>
+            <p className="name">Pylyptsiv Alina</p>
+            <p className="role">Cybersecurity Student</p>
+            <p className="bio">
+                Cybersecurity student forging a career through CTFs, hackathons, and
+                practical security challenges. This portfolio serves as a live record
+                of my journey—documenting solutions, labs, and key lessons as I
+                navigate the evolving cybersecurity landscape. Cybersecurity student
+                forging a career through CTFs, hackathons, and practical security
+                challenges. This portfolio serves as a live record of my
+                journey—documenting solutions, labs, and key lessons as I navigate the
+                evolving cybersecurity landscape.
+            </p>
         </header>
     );
 }

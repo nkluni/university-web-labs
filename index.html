@@ -4,127 +4,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CV студентки спеціальності кібербезпека: навчання, участь у CTF, навички.">
-    <title>Пилипців Аліна — CV</title>
+    <meta name="description" content="">
+    <title>Pylyptsiv Alina — Cybersecurity Student</title>
 </head>
 
 <body>
-    <header>
-        <h1>Пилипців Аліна</h1>
-        <p>Студентка напряму «Кібербезпека» | Початківець у сфері інформаційної безпеки</p>
+    <div class="resume">
 
-        <nav aria-label="Навігація по сторінці">
-            <ul>
-                <li><a href="#about">Про мене</a></li>
-                <li><a href="#education">Освіта</a></li>
-                <li><a href="#experience">Досвід</a></li>
-                <li><a href="#skills">Навички</a></li>
-                <li><a href="#contacts">Контакти</a></li>
-            </ul>
-        </nav>
-    </header>
+        <!-- ===== Ліва колонка (темна панель) ===== -->
+        <aside class="sidebar">
 
-    <main>
-
-        <section id="about">
-            <h2>Про мене</h2>
-            <p>
-                Я студентка, яка вивчає кібербезпеку та прагне розвиватися у сфері
-                інформаційної безпеки. Цікавлюся етичним хакінгом, захистом мереж
-                і веб-застосунків. Беру участь у CTF-змаганнях та хакатонах,
-                щоб застосовувати знання на практиці.
-            </p>
-            <p>
-                Шукаю можливість отримати перший професійний досвід
-                (стажування або junior-позиція) у сфері кібербезпеки.
-            </p>
-        </section>
-
-        <section id="education">
-            <h2>Освіта</h2>
-            <article>
-                <h3>Національний університет «Львівська політехніка»</h3>
-                <p>Спеціальність: Кібербезпека та захист інформації</p>
-                <p>
-                    <time datetime="2025-09">вересень 2025</time> —
-                    теперішній час (очікуваний випуск: <time datetime="2029-06">червень 2029</time>)
+            <header class="profile">
+                <div class="avatar" aria-hidden="true">PA</div>
+                <p class="name">Pylyptsiv Alina</p>
+                <p class="role">Cybersecurity Student</p>
+                <p class="bio">
+                    Cybersecurity student forging a career through CTFs, hackathons, and practical security challenges.
+                    This portfolio serves as a live record of my journey—documenting solutions, labs, and key lessons as
+                    I navigate the evolving cybersecurity landscape. Cybersecurity student forging a career through
+                    CTFs,
+                    hackathons, and practical security challenges. This portfolio serves as a live record of my
+                    journey—documenting solutions,
+                    labs, and key lessons as I navigate the evolving cybersecurity landscape.
                 </p>
-                <h4>Основні дисципліни:</h4>
-                <ul>
-                    <li>Теорія інформації та кодування</li>
-                    <li>Комп'ютерні мережі та їх захист</li>
-                    <li>Програмування скриптовими мовами </li>
-                    <li>Технології вебпрограмування</li>
-                    <li>Кібергігієна та інформаційна стійкість</li>
-                </ul>
-            </article>
-        </section>
+            </header>
 
-        <section id="experience">
-            <h2>Досвід та практична діяльність</h2>
-            <p>Офіційного місця роботи поки немає, тому нижче — недавній практичний досвід зі змагань та подій.</p>
-
-            <section id="ctf">
-                <h3>CTF-змагання</h3>
-                <article>
-                    <p><time datetime="2026-07">Липень 2026</time> | Роль: Explorer / у команді «Cyber_Valkyries»</p>
+            <section id="contact">
+                <h2>Contact</h2>
+                <address>
                     <ul>
-                        <li>Розв'язувала завдання в категоріях: forensics, OSINT, reverse engineering, steganography
+                        <li>Email: <a href="mailto:alina.pylyptsiv.kb.2025@lpnu.ua">alina.pylyptsiv.kb.2025@lpnu.ua</a>
                         </li>
-                        <li>Reverse engineering: здобула практичний досвід роботи з інструментом Ghidra та аналізу
-                            скомпільованого бінарного коду</li>
-                        <li>Steganography: навчилася шукати приховану інформацію в медіафайлах за допомогою
-                            ExifTool</li>
-                        <li>OSINT: навчилася збирати та структурувати публічну інформацію про ціль без прямого
-                            злому</li>
-                        <li>Forensics: навчилася аналізувати файлові системи та артефакти Windows/Linux</li>
+                        <li>GitHub: <a href="https://github.com/nkluni" target="_blank"
+                                rel="noopener noreferrer">github.com/nkluni</a></li>
+                        <li>LinkedIn: <a href="https://www.linkedin.com/in/аліна-пилипців-a42a32440" target="_blank"
+                                rel="noopener noreferrer">linkedin.com/in/аліна-пилипців-a42a32440</a></li>
+                        <li>Lviv, Ukraine</li>
+                    </ul>
+                </address>
+            </section>
+
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <ul>
+                    <li>
+                        <label for="skill-python">Python</label>
+                        <span>70%</span>
+                        <meter id="skill-python" min="0" max="100" value="70">70%</meter>
+                    </li>
+                    <li>
+                        <label for="skill-react">React / Next.js</label>
+                        <span>30%</span>
+                        <meter id="skill-react" min="0" max="100" value="30">30%</meter>
+                    </li>
+                    <li>
+                        <label for="skill-node">Node.js</label>
+                        <span>50%</span>
+                        <meter id="skill-node" min="0" max="100" value="50">%</meter>
+                    </li>
+                    <li>
+                        <label for="skill-db">SQL</label>
+                        <span>65%</span>
+                        <meter id="skill-db" min="0" max="100" value="65">65%</meter>
+                    </li>
+                    <li>
+                        <label for="skill-web">HTML / CSS</label>
+                        <span>90%</span>
+                        <meter id="skill-web" min="0" max="100" value="90">90%</meter>
+                    </li>
+                    <li>
+                        <label for="skill-c#">C#</label>
+                        <span>45%</span>
+                        <meter id="skill-c#" min="0" max="100" value="45">45%</meter>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="languages">
+                <h2>Languages</h2>
+                <ul>
+                    <li>English <span>B2-Level</span></li>
+                    <li>Ukranian <span>Native</span></li>
+                </ul>
+            </section>
+
+        </aside>
+
+        <!-- ===== Права колонка (основний вміст) ===== -->
+        <main class="content">
+
+            <section id="intro">
+                <h1>Hi, I'm <span class="accent">Alina</span></h1>
+                <p>
+                    I am a Cybersecurity student on a hands-on journey to master the complexities of
+                    information security. Rather than following a purely theoretical path, I actively
+                    build my skills through Capture The Flag competitions, security hackathons,
+                    defense simulations, and practical cyber challenges.
+                </p>
+            </section>
+
+            <section id="experience">
+                <h2>PRACTICAL TRAININGS</h2>
+
+                <article>
+                    <header>
+                        <h3>Hands-on Cybersecurity Student</h3>
+                        <p><time datetime="2025">2025</time> — Present</p>
+                    </header>
+                    <p class="company">Challenge Grinding</p>
+                    <ul>
+                        <li>Engaged in CTF events and hackathons, solving real-world challenges across AI Prompt
+                            Injection,
+                            Forensics, and Reverse engineering categories under time constraints.</li>
+                        <li>Executed recovery and hard resets on Android devices to restore system
+                            functionality and explore mobile OS boot processes.</li>
+                        <li>Diagnosed and resolved complex Linux Wi-Fi driver and interface
+                            configuration issues through terminal-based network management tools.</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <header>
+                        <h3>Cyber Origin Story</h3>
+                        <p><time datetime="2022">2023</time> — <time datetime="2024">2025</time></p>
+                    </header>
+                    <p class="company">Exploration</p>
+                    <ul>
+                        <li>Completed an introductory SOC course, gaining structured insights into log analysis,
+                            incident response basics, and defensive security workflows.</li>
+                        <li>Built a daily learning habit by surrounding myself with security content.</li>
+                        <li>Committed fully to the field by enrolling in a Cybersecurity Bachelor's degree program,
+                            aligning formal academic theory with practical CTF grinding and hands-on lab experiments.
+                        </li>
                     </ul>
                 </article>
             </section>
-        </section>
 
-        <section id="skills">
-            <h2>Навички</h2>
+            <section id="projects">
+                <h2>Featured Projects</h2>
 
-            <h3>Технічні</h3>
-            <ul>
-                <li>Основи мережевих протоколів (TCP/IP, HTTP, DNS)</li>
-                <li>Робота з Linux та командним рядком</li>
-                <li>Базові інструменти: Wireshark, Nmap, Burp Suite</li>
-                <li>Мови програмування: Python, Bash, JavaScript</li>
-                <li>Системи контролю версій: Git</li>
-            </ul>
+                <article>
+                    <h3>E-Commerce Platform</h3>
+                    <p>Documented solutions and methodologies for web exploitation, cryptography,
+                        challenges on TryHackMe and HTB.</p>
+                    <ul class="tags">
+                        <li>CTF</li>
+                        <li>TryHackMe</li>
+                        <li>Wireshark</li>
+                        <li>Web Exploitation</li>
+                    </ul>
+                </article>
 
-            <h3>Особисті</h3>
-            <ul>
-                <li>Командна робота (досвід із CTF)</li>
-                <li>Швидке навчання та самоосвіта</li>
-                <li>Аналітичне мислення</li>
-            </ul>
+                <article>
+                    <h3>Hardware And Systems Diagnostics Lab</h3>
+                    <p>Hands-on hardware teardown of non-functional USB media,
+                        Android boot restoration, and bare-metal Linux OS deployments.</p>
+                    <ul class="tags">
+                        <li>Hardware Analysis</li>
+                        <li>Linux Mint</li>
+                        <li>Android Diagnostics</li>
+                    </ul>
+                </article>
 
-            <h3>Мови</h3>
-            <ul>
-                <li>Українська — рідна</li>
-                <li>Англійська — B2</li>
-            </ul>
-        </section>
+                <article>
+                    <h3>Log Analysis</h3>
+                    <p>Simulated packet analysis and log investigation workflows
+                        based on introductory SOC analyst training scenarios.</p>
+                    <ul class="tags">
+                        <li>SOC Fundamentals</li>
+                        <li>Wireshark</li>
+                        <li>Log Analysis</li>
+                    </ul>
+                </article>
 
-    </main>
+                <article>
+                    <h3>Virtualization</h3>
+                    <p>Configured custom virtualized test environments and Android emulators
+                        inside Linux to troubleshoot driver configurations and network interfaces.</p>
+                    <ul class="tags">
+                        <li>Linux</li>
+                        <li>Bash</li>
+                        <li>Network Troubleshooting</li>
+                    </ul>
+                </article>
+            </section>
 
-    <footer id="contacts">
-        <h2>Контакти</h2>
-        <address>
-            <ul>
-                <li>Email: <a href="mailto:alina.pylyptsiv.kb.2025@lpnu.ua">alina.pylyptsiv.kb.2025@lpnu.ua</a></li>
-                <li>GitHub: <a href="https://github.com/nkluni" target="_blank"
-                        rel="noopener noreferrer">github.com/nkluni</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/аліна-пилипців-a42a32440" target="_blank"
-                        rel="noopener noreferrer">linkedin.com/in/аліна-пилипців-a42a32440</a></li>
-                <li>Місто: Львів, Україна</li>
-            </ul>
-        </address>
-        <p><small>&copy; 2026 Пилипців Аліна</small></p>
-    </footer>
+            <section id="Footer">
+                <h2>Certifications</h2>
+                <article>
+                    <header>
+                        <h3>Internet Security During War: A Practical Course</h3>
+                        <p><time datetime="2026">2026</time></p>
+                    </header>
+                    <p>Digital and information and communication competence &amp; Critical thinking and systems thinking
+                        skills</p>
+                </article>
+            </section>
+
+        </main>
 </body>
 
 </html>

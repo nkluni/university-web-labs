@@ -1,22 +1,20 @@
-import Header from "./components/Header";
-import About from "./components/About";
-import Education from "./components/Education";
+import Sidebar from "./components/Sidebar";
+import Intro from "./components/Intro";
 import Experience from "./components/Experience";
-import Skills from "./components/Skills";
-import Footer from "./components/Footer";
+import Projects from "./components/Projects";
+import Certifications from "./components/Certifications";
 
 function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <About />
-        <Education />
+    <div className="resume">
+      <Sidebar />
+      <main className="content">
+        <Intro />
         <Experience />
-        <Skills />
+        <Projects />
+        <Certifications />
       </main>
-      <Footer />
-    </>
+    </div>
   );
 }
 
