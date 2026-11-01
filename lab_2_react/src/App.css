@@ -1,184 +1,451 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* =========================================================
+   CV — Pylyptsiv Alina
+   Дизайн: темна бокова панель + світла область контенту
+   ========================================================= */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ---------- 1. Змінні та скидання (box-sizing) ---------- */
+:root {
+  --navy-900: #0b1b33;
+  --navy-800: #10294a;
+  --cyan-300: #7dd3fc;
+  --cyan-400: #38bdf8;
+  --blue-500: #3b82f6;
+  --teal-500: #3aa6c8;
+  --teal-600: #2b8aa6;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --card: #f8fafc;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+/* box-sizing: padding і border входять у ширину елемента */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-#center {
+/* ---------- 2. Селектори тегів ---------- */
+body {
+  margin: 0;
+  padding: 32px 16px;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #e8eef6;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+time {
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Псевдокласи :hover та :focus-visible */
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--cyan-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Селектори атрибутів */
+a[href^="mailto:"] {
+  color: var(--cyan-300);
+}
+
+a[target="_blank"]::after {
+  content: " \2197";
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+/* ---------- 3. Макет сторінки: CSS Grid ---------- */
+.resume {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  max-width: 1180px;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(15, 39, 68, 0.18);
+}
+
+/* ---------- 4. Бокова панель (Flexbox) ---------- */
+.sidebar {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
+  gap: 32px;
+  padding: 40px 28px;
+  color: #dbe7f5;
+  background: linear-gradient(180deg, var(--navy-800), var(--navy-900));
+}
+
+.sidebar h2 {
+  margin-bottom: 14px;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan-300);
+}
+
+/* Профіль */
+.profile {
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.avatar {
+  display: grid;
   place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 20px;
+  border: 4px solid rgba(125, 211, 252, 0.35);
+  border-radius: 50%;
+  font-size: 44px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--cyan-400), var(--blue-500));
+  box-shadow: 0 0 32px rgba(56, 189, 248, 0.45);
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.role {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan-300);
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+.bio {
+  margin-top: 18px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #cbd8e8;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+/* Контакти (селектор ID) */
+#contact li {
+  padding: 8px 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
-.ticks {
-  position: relative;
+#contact li:not(:last-child) {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+/* Навички */
+#skills ul {
+  display: grid;
+  gap: 14px;
+}
+
+#skills li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  font-size: 14px;
+}
+
+#skills li span {
+  font-weight: 600;
+  color: var(--cyan-300);
+}
+
+#skills meter {
+  grid-column: 1 / -1;
+}
+
+/* Смужка рівня навички (<meter>) */
+meter {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+meter::-webkit-meter-bar {
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+meter::-webkit-meter-optimum-value,
+meter::-webkit-meter-suboptimum-value,
+meter::-webkit-meter-even-less-good-value {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cyan-400), var(--blue-500));
+}
+
+meter::-moz-meter-bar {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cyan-400), var(--blue-500));
+}
+
+/* Мови */
+#languages li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+#languages li span {
+  font-weight: 600;
+  color: var(--cyan-300);
+}
+
+/* ---------- 5. Основний вміст ---------- */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 48px 44px;
+  background: #fff;
+}
+
+#intro h1 {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.accent {
+  color: var(--teal-500);
+}
+
+#intro p {
+  max-width: 62ch;
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Заголовки секцій із кольоровою позначкою */
+.content h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.content h2::before {
+  content: "";
+  width: 5px;
+  height: 24px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--cyan-400), var(--blue-500));
+}
+
+/* Спільне оформлення шапки article: назва + дата */
+article>header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+article h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+article>header p {
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+/* Досвід — часова лінія */
+#experience article {
+  position: relative;
+  margin-left: 6px;
+  padding: 0 0 28px 28px;
+  border-left: 2px solid var(--line);
+}
+
+#experience article:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+#experience article::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: -8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cyan-400);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+}
+
+.company {
+  margin: 2px 0 10px;
+  font-weight: 700;
+  color: var(--teal-600);
+}
+
+#experience ul {
+  display: grid;
+  gap: 6px;
+  padding-left: 20px;
+  list-style: disc;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+#experience li::marker {
+  color: var(--cyan-400);
+}
+
+/* Проєкти — сітка карток 2 × N */
+#projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+#projects h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 2px;
+}
+
+#projects article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+#projects article:hover {
+  transform: translateY(-3px);
+  border-color: var(--cyan-400);
+  box-shadow: 0 10px 24px rgba(15, 39, 68, 0.1);
+}
+
+#projects article p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Теги технологій (селектор класу) */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tags li {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e5a8a;
+  background: #dbeafe;
+}
+
+/* Сертифікати */
+#certifications article {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+#certifications article>p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- 6. Медіазапити: вузькі екрани ---------- */
+@media (max-width: 900px) {
+  body {
+    padding: 0;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  /* Дві колонки → одна, панель зверху */
+  .resume {
+    grid-template-columns: 1fr;
+    border: 0;
+    border-radius: 0;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  /* Секції панелі стають адаптивною сіткою */
+  .sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    padding: 32px 20px;
+  }
+
+  .profile {
+    grid-column: 1 / -1;
+  }
+
+  .content {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  #projects {
+    grid-template-columns: 1fr;
+  }
+
+  article>header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

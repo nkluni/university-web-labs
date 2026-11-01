@@ -1,9 +1,3 @@
-/* =========================================================
-   CV — Pylyptsiv Alina
-   Дизайн: темна бокова панель + світла область контенту
-   ========================================================= */
-
-/* ---------- 1. Змінні та скидання (box-sizing) ---------- */
 :root {
     --navy-900: #0b1b33;
     --navy-800: #10294a;
@@ -18,14 +12,12 @@
     --card: #f8fafc;
 }
 
-/* box-sizing: padding і border входять у ширину елемента */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* ---------- 2. Селектори тегів ---------- */
 body {
     margin: 0;
     padding: 32px 16px;
@@ -61,7 +53,6 @@ a {
     text-decoration: none;
 }
 
-/* Псевдокласи :hover та :focus-visible */
 a:hover {
     text-decoration: underline;
 }
@@ -72,7 +63,6 @@ a:focus-visible {
     border-radius: 4px;
 }
 
-/* Селектори атрибутів */
 a[href^="mailto:"] {
     color: var(--cyan-300);
 }
@@ -83,7 +73,6 @@ a[target="_blank"]::after {
     opacity: 0.7;
 }
 
-/* ---------- 3. Макет сторінки: CSS Grid ---------- */
 .resume {
     display: grid;
     grid-template-columns: 340px minmax(0, 1fr);
@@ -96,7 +85,6 @@ a[target="_blank"]::after {
     box-shadow: 0 24px 60px rgba(15, 39, 68, 0.18);
 }
 
-/* ---------- 4. Бокова панель (Flexbox) ---------- */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -114,7 +102,6 @@ a[target="_blank"]::after {
     color: var(--cyan-300);
 }
 
-/* Профіль */
 .profile {
     padding-bottom: 28px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -158,7 +145,6 @@ a[target="_blank"]::after {
     color: #cbd8e8;
 }
 
-/* Контакти (селектор ID) */
 #contact li {
     padding: 8px 0;
     font-size: 14px;
@@ -169,7 +155,6 @@ a[target="_blank"]::after {
     border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
 }
 
-/* Навички */
 #skills ul {
     display: grid;
     gap: 14px;
@@ -191,7 +176,6 @@ a[target="_blank"]::after {
     grid-column: 1 / -1;
 }
 
-/* Смужка рівня навички (<meter>) */
 meter {
     -webkit-appearance: none;
     appearance: none;
@@ -221,7 +205,6 @@ meter::-moz-meter-bar {
     background: linear-gradient(90deg, var(--cyan-400), var(--blue-500));
 }
 
-/* Мови */
 #languages li {
     display: flex;
     justify-content: space-between;
@@ -234,7 +217,6 @@ meter::-moz-meter-bar {
     color: var(--cyan-300);
 }
 
-/* ---------- 5. Основний вміст ---------- */
 .content {
     display: flex;
     flex-direction: column;
@@ -261,7 +243,6 @@ meter::-moz-meter-bar {
     color: var(--muted);
 }
 
-/* Заголовки секцій із кольоровою позначкою */
 .content h2 {
     display: flex;
     align-items: center;
@@ -280,7 +261,6 @@ meter::-moz-meter-bar {
     background: linear-gradient(180deg, var(--cyan-400), var(--blue-500));
 }
 
-/* Спільне оформлення шапки article: назва + дата */
 article>header {
     display: flex;
     flex-wrap: wrap;
@@ -300,7 +280,6 @@ article>header p {
     color: var(--muted);
 }
 
-/* Досвід — часова лінія */
 #experience article {
     position: relative;
     margin-left: 6px;
@@ -344,7 +323,6 @@ article>header p {
     color: var(--cyan-400);
 }
 
-/* Проєкти — сітка карток 2 × N */
 #projects {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -378,7 +356,6 @@ article>header p {
     color: var(--muted);
 }
 
-/* Теги технологій (селектор класу) */
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -395,7 +372,6 @@ article>header p {
     background: #dbeafe;
 }
 
-/* Сертифікати */
 #certifications article {
     padding: 18px 20px;
     border: 1px solid var(--line);
@@ -409,20 +385,17 @@ article>header p {
     color: var(--muted);
 }
 
-/* ---------- 6. Медіазапити: вузькі екрани ---------- */
 @media (max-width: 900px) {
     body {
         padding: 0;
     }
 
-    /* Дві колонки → одна, панель зверху */
     .resume {
         grid-template-columns: 1fr;
         border: 0;
         border-radius: 0;
     }
 
-    /* Секції панелі стають адаптивною сіткою */
     .sidebar {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

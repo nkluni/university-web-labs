@@ -1,38 +1,46 @@
+
+const skills = [
+    { id: "skill-python", name: "Python", value: 70 },
+    { id: "skill-react", name: "React / Next.js", value: 30 },
+    { id: "skill-node", name: "Node.js", value: 50 },
+    { id: "skill-db", name: "SQL", value: 65 },
+    { id: "skill-web", name: "HTML / CSS", value: 90 },
+    { id: "skill-csharp", name: "C#", value: 45 },
+];
+
 function Skills() {
     return (
         <section id="skills">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li>
-                    <label htmlFor="skill-python">Python</label>
-                    <span>70%</span>
-                    <meter id="skill-python" min="0" max="100" value="70">70%</meter>
-                </li>
-                <li>
-                    <label htmlFor="skill-react">React / Next.js</label>
-                    <span>30%</span>
-                    <meter id="skill-react" min="0" max="100" value="30">30%</meter>
-                </li>
-                <li>
-                    <label htmlFor="skill-node">Node.js</label>
-                    <span>50%</span>
-                    <meter id="skill-node" min="0" max="100" value="50">50%</meter>
-                </li>
-                <li>
-                    <label htmlFor="skill-db">SQL</label>
-                    <span>65%</span>
-                    <meter id="skill-db" min="0" max="100" value="65">65%</meter>
-                </li>
-                <li>
-                    <label htmlFor="skill-web">HTML / CSS</label>
-                    <span>90%</span>
-                    <meter id="skill-web" min="0" max="100" value="90">90%</meter>
-                </li>
-                <li>
-                    <label htmlFor="skill-csharp">C#</label>
-                    <span>45%</span>
-                    <meter id="skill-csharp" min="0" max="100" value="45">45%</meter>
-                </li>
+            <h2 className="mb-3.5 text-sm font-bold uppercase tracking-[0.16em] text-sky-300">
+                Technical Skills
+            </h2>
+
+            <ul className="grid gap-3.5">
+                {skills.map((skill) => (
+                    <li
+                        key={skill.id}
+                        className="grid grid-cols-[1fr_auto] gap-x-3 gap-y-1.5 text-sm"
+                    >
+                        <label htmlFor={skill.id}>{skill.name}</label>
+
+                        <span className="font-semibold text-sky-300">
+                            {skill.value}%
+                        </span>
+
+                        <div className="col-span-2 h-2 overflow-hidden rounded-full bg-white/10">
+                            <div
+                                id={skill.id}
+                                role="meter"
+                                aria-label={skill.name}
+                                aria-valuemin={0}
+                                aria-valuemax={100}
+                                aria-valuenow={skill.value}
+                                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-blue-500 transition-all duration-500"
+                                style={{ width: `${skill.value}%` }}
+                            />
+                        </div>
+                    </li>
+                ))}
             </ul>
         </section>
     );
