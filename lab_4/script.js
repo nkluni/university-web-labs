@@ -44,3 +44,56 @@ try {
     document.getElementById("system-info").textContent =
         "Не вдалося отримати дані: " + error.message;
 }
+
+
+// ===== Крок 2: відгуки з сервера (fetch) =====
+
+// Адреса API для варіанта 20: коментарі до допису №20
+const REVIEWS_URL = "https://jsonplaceholder.typicode.com/posts/20/comments";
+
+// Створюємо картку одного відгуку. Текст вставляємо через textContent (безпечно)
+function createReviewCard(comment) {
+    const article = document.createElement("article");
+
+    const header = document.createElement("header");
+    const name = document.createElement("h3");
+    name.textContent = comment.name;
+    const id = document.createElement("p");
+    id.textContent = "#" + comment.id;
+    header.append(name, id);
+
+    const email = document.createElement("p");
+    email.className = "review-email";
+    email.textContent = comment.email;
+
+    const body = document.createElement("p");
+    body.className = "review-body";
+    body.textContent = comment.body;
+
+    article.append(header, email, body);
+    return article;
+}
+
+// async/await: чекаємо відповідь сервера, не блокуючи сторінку
+async function loadReviews() {
+    const status = document.getElementById("reviews-status");
+    const list = document.getElementById("reviews-list");
+
+    try {
+        const response = await fetch(REVIEWS_URL);
+        // fetch не кидає помилку на 404/500, тому статус перевіряємо вручну
+        if (!response.ok) {
+            throw new Error("Сервер відповів зі статусом " + response.status);
+        }
+
+        const comments = await response.json();
+
+        // Виводимо відгуки в тому порядку, у якому їх повернув сервер
+        list.replaceChildren(...comments.map(createReviewCard));
+        status.textContent = "Показано відгуків: " + comments.length;
+    } catch (error) {
+        status.textContent = "Не вдалося завантажити відгуки: " + error.message;
+    }
+}
+
+loadReviews();
