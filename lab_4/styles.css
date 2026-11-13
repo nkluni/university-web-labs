@@ -10,6 +10,25 @@
     --muted: #64748b;
     --line: #e2e8f0;
     --card: #f8fafc;
+    --page-bg: #e8eef6;
+    --surface: #ffffff;
+    --tag-bg: #dbeafe;
+    --tag-text: #1e5a8a;
+}
+
+/* Нічна тема: клас .dark-mode на <body> перевизначає ті самі змінні */
+body.dark-mode {
+    --ink: #e2e8f0;
+    --muted: #94a3b8;
+    --line: #1f3556;
+    --card: #12233f;
+    --page-bg: #060e1c;
+    --surface: #0d1a2e;
+    --tag-bg: #16365c;
+    --tag-text: #9ad3ff;
+    --teal-500: #5cc0dc;
+    --teal-600: #5cc0dc;
+    color-scheme: dark;
 }
 
 *,
@@ -24,7 +43,8 @@ body {
     font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
     line-height: 1.5;
     color: var(--ink);
-    background: #e8eef6;
+    background: var(--page-bg);
+    transition: background 0.3s, color 0.3s;
 }
 
 h1,
@@ -81,7 +101,7 @@ a[target="_blank"]::after {
     border: 1px solid var(--line);
     border-radius: 24px;
     overflow: hidden;
-    background: #fff;
+    background: var(--surface);
     box-shadow: 0 24px 60px rgba(15, 39, 68, 0.18);
 }
 
@@ -222,7 +242,7 @@ meter::-moz-meter-bar {
     flex-direction: column;
     gap: 40px;
     padding: 48px 44px;
-    background: #fff;
+    background: var(--surface);
 }
 
 #intro h1 {
@@ -368,8 +388,8 @@ article>header p {
     border-radius: 6px;
     font-size: 12px;
     font-weight: 600;
-    color: #1e5a8a;
-    background: #dbeafe;
+    color: var(--tag-text);
+    background: var(--tag-bg);
 }
 
 #certifications article {
@@ -467,6 +487,127 @@ article>header p {
     margin-top: 10px;
     font-size: 14px;
     color: var(--muted);
+}
+
+/* Модальне вікно зворотного зв'язку (крок 3) */
+#feedback-modal {
+    width: min(480px, calc(100% - 32px));
+    padding: 0;
+    border: 0;
+    border-radius: 16px;
+    color: var(--ink);
+    background: var(--surface);
+    box-shadow: 0 24px 60px rgba(15, 39, 68, 0.35);
+}
+
+#feedback-modal::backdrop {
+    background: rgba(11, 27, 51, 0.65);
+}
+
+#feedback-form {
+    display: grid;
+    gap: 6px;
+    padding: 28px;
+}
+
+#feedback-form h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+}
+
+#feedback-form label {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+#feedback-form input,
+#feedback-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--card);
+}
+
+#feedback-form textarea {
+    resize: vertical;
+}
+
+#feedback-form input:focus-visible,
+#feedback-form textarea:focus-visible {
+    outline: 2px solid var(--cyan-400);
+    outline-offset: 1px;
+}
+
+#feedback-status {
+    min-height: 1.5em;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--teal-600);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-actions button {
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#feedback-submit {
+    color: #fff;
+    background: linear-gradient(135deg, var(--cyan-400), var(--blue-500));
+}
+
+#feedback-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+#feedback-close {
+    color: var(--ink);
+    background: var(--line);
+}
+
+/* Кнопка перемикання теми (крок 4) */
+#theme-toggle {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--surface);
+    box-shadow: 0 4px 14px rgba(15, 39, 68, 0.18);
+    cursor: pointer;
+}
+
+#theme-toggle:hover {
+    border-color: var(--cyan-400);
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--cyan-400);
+    outline-offset: 2px;
 }
 
 @media (max-width: 900px) {

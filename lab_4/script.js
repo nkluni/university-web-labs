@@ -1,6 +1,3 @@
-// ===== Крок 1: системна інформація → localStorage → футер =====
-
-// 1. Збираємо інформацію про операційну систему та браузер
 function collectSystemInfo() {
     return {
         "User agent": navigator.userAgent,
@@ -17,12 +14,10 @@ function collectSystemInfo() {
     };
 }
 
-// 2. Зберігаємо в localStorage. Він приймає лише рядки, тому об'єкт перетворюємо через JSON.stringify
 function saveSystemInfo() {
     localStorage.setItem("systemInfo", JSON.stringify(collectSystemInfo()));
 }
 
-// 3. Читаємо з localStorage (JSON.parse повертає рядок назад в об'єкт) і малюємо у футері
 function renderSystemInfo() {
     const list = document.getElementById("system-info");
     const saved = JSON.parse(localStorage.getItem("systemInfo"));
@@ -45,13 +40,8 @@ try {
         "Не вдалося отримати дані: " + error.message;
 }
 
-
-// ===== Крок 2: відгуки з сервера (fetch) =====
-
-// Адреса API для варіанта 20: коментарі до допису №20
 const REVIEWS_URL = "https://jsonplaceholder.typicode.com/posts/20/comments";
 
-// Створюємо картку одного відгуку. Текст вставляємо через textContent (безпечно)
 function createReviewCard(comment) {
     const article = document.createElement("article");
 
@@ -74,21 +64,17 @@ function createReviewCard(comment) {
     return article;
 }
 
-// async/await: чекаємо відповідь сервера, не блокуючи сторінку
 async function loadReviews() {
     const status = document.getElementById("reviews-status");
     const list = document.getElementById("reviews-list");
 
     try {
         const response = await fetch(REVIEWS_URL);
-        // fetch не кидає помилку на 404/500, тому статус перевіряємо вручну
         if (!response.ok) {
             throw new Error("Сервер відповів зі статусом " + response.status);
         }
 
         const comments = await response.json();
-
-        // Виводимо відгуки в тому порядку, у якому їх повернув сервер
         list.replaceChildren(...comments.map(createReviewCard));
         status.textContent = "Показано відгуків: " + comments.length;
     } catch (error) {
@@ -97,3 +83,100 @@ async function loadReviews() {
 }
 
 loadReviews();
+
+const FEEDBACK_DELAY_MS = 60000;
+
+function initFeedbackModal() {
+    const modal = document.getElementById("feedback-modal");
+    const form = document.getElementById("feedback-form");
+    const status = document.getElementById("feedback-status");
+    const submitButton = document.getElementById("feedback-submit");
+    const closeButton = document.getElementById("feedback-close");
+
+    setTimeout(() => {
+        if (!modal.open) {
+            modal.showModal();
+        }
+    }, FEEDBACK_DELAY_MS);
+
+    closeButton.addEventListener("click", () => modal.close());
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.close();
+        }
+    });
+    modal.addEventListener("close", () => {
+        status.textContent = "";
+    });
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const url = form.getAttribute("action");
+        if (url.includes("YOUR_FORM_ID")) {
+            status.textContent = "Вкажіть адресу Formspree в атрибуті action форми.";
+            return;
+        }
+
+        status.textContent = "Надсилаємо…";
+        submitButton.disabled = true;
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { Accept: "application/json" },
+            });
+            if (!response.ok) {
+                throw new Error("Сервер відповів зі статусом " + response.status);
+            }
+            form.reset();
+            status.textContent = "Дякуємо! Повідомлення надіслано.";
+        } catch (error) {
+            status.textContent = "Не вдалося надіслати: " + error.message;
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
+}
+
+initFeedbackModal();
+
+const DAY_START_HOUR = 7;  
+const NIGHT_START_HOUR = 21; 
+
+function getAutoTheme() {
+    const hour = new Date().getHours();
+    return hour >= DAY_START_HOUR && hour < NIGHT_START_HOUR ? "day" : "night";
+}
+
+function applyTheme(theme) {
+    const button = document.getElementById("theme-toggle");
+    const isNight = theme === "night";
+
+    document.body.classList.toggle("dark-mode", isNight);
+    button.textContent = isNight ? "☀️ Day" : "🌙 Night";
+    button.setAttribute("aria-pressed", String(isNight));
+}
+
+function initTheme() {
+    const button = document.getElementById("theme-toggle");
+
+    let saved = null;
+    try {
+        saved = localStorage.getItem("theme");
+    } catch (error) {
+    }
+    applyTheme(saved === "day" || saved === "night" ? saved : getAutoTheme());
+
+    button.addEventListener("click", () => {
+        const next = document.body.classList.contains("dark-mode") ? "day" : "night";
+        applyTheme(next);
+        try {
+            localStorage.setItem("theme", next);
+        } catch (error) {
+        }
+    });
+}
+
+initTheme();
